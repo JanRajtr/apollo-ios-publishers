@@ -13,13 +13,11 @@ where SubscriberType.Input == GraphQLResult<GraphQuery.Data>, SubscriberType.Fai
 
     init(client: ApolloClient, query: GraphQuery,
          cachePolicy: CachePolicy = .returnCacheDataElseFetch,
-         context: UnsafeMutableRawPointer?,
          subscriber: SubscriberType) {
 
         self.subscriber = subscriber
         self.cancellable = client.fetch(query: query,
                                         cachePolicy: cachePolicy,
-                                        context: context,
                                         resultHandler: self.handle)
     }
 

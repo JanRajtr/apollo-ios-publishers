@@ -26,7 +26,6 @@ public struct GraphQLUploadPublisher<UploadOperation: GraphQLOperation>: Publish
         let subscription = GraphQLUploadSubscription(client: self.client,
                                                     operation: self.operation,
                                                     files: self.files,
-                                                    context: self.context,
                                                     subscriber: subscriber)
         subscriber.receive(subscription: subscription)
     }

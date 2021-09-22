@@ -13,12 +13,10 @@ where SubscriberType.Input == GraphQLResult<GraphMutation.Data>, SubscriberType.
 
     init(client: ApolloClient,
          mutation: GraphMutation,
-         context: UnsafeMutableRawPointer?,
          subscriber: SubscriberType) {
 
         self.subscriber = subscriber
         self.cancellable = client.perform(mutation: mutation,
-                                        context: context,
                                         resultHandler: self.handle)
     }
 

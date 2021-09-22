@@ -25,7 +25,6 @@ public struct GraphQLMutationPublisher<Mutation: GraphQLMutation>: Publisher {
     public func receive<S>(subscriber: S) where S : Subscriber, S.Failure == Error, S.Input == GraphQLResult<Mutation.Data> {
         let subscription = GraphQLMutationSubscription(client: self.client,
                                                     mutation: self.mutation,
-                                                    context: self.context,
                                                     subscriber: subscriber)
         subscriber.receive(subscription: subscription)
     }

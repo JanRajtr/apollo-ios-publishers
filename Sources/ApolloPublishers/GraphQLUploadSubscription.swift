@@ -14,13 +14,11 @@ where SubscriberType.Input == GraphQLResult<GraphOperation.Data>, SubscriberType
     init(client: ApolloClient,
          operation: GraphOperation,
          files: [GraphQLFile],
-         context: UnsafeMutableRawPointer?,
          subscriber: SubscriberType) {
 
         self.subscriber = subscriber
         self.cancellable = client.upload(
             operation: operation,
-            context: context,
             files: files,
             resultHandler: self.handle)
     }

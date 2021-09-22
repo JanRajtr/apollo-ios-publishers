@@ -29,7 +29,6 @@ public struct GraphQLQueryPublisher<Query: GraphQLQuery>: Publisher {
         let subscription = GraphQLQuerySubscription(client: self.client,
                                                     query: self.query,
                                                     cachePolicy: self.cachePolicy,
-                                                    context: self.context,
                                                     subscriber: subscriber)
         subscriber.receive(subscription: subscription)
     }
